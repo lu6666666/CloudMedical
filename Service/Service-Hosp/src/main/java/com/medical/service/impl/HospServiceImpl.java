@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class HospServiceImpl extends ServiceImpl<HospMapper, HospitalSet> implements HospService {
 
+    // 注入mapper
     @Autowired
     private HospMapper hospMapper;
 
