@@ -2,7 +2,6 @@ package com.medical.result;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import com.atguigu.yygh.common.result.ResultCodeEnum;
 /**
  * @author Luo.X
  * @Description 返回结果工具类

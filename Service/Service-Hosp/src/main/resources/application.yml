@@ -21,3 +21,4 @@ spring:
 # mapper XML文件的路径
 mybatis-plus:
   mapper-locations: classpath:com/medical/mapper/*.xml
+
