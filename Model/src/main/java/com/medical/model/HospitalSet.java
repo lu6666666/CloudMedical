@@ -1,5 +1,6 @@
 package com.medical.model;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -63,6 +64,8 @@ public class HospitalSet implements Serializable {
     /**
      * 逻辑删除(1:已删除，0:未删除)
      */
+    // 逻辑删除注解
+    @TableLogic
     private Integer isDeleted;
 }
 

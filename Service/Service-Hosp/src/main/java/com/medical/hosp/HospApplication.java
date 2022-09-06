@@ -1,8 +1,9 @@
-package com.medical;
+package com.medical.hosp;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author Luo.X
@@ -11,7 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Version 1.0
  */
 @SpringBootApplication
-@MapperScan("com.medical.mapper")
+// 扫描swagger规则
+@ComponentScan(basePackages = {"com.medical"})
 public class HospApplication {
     public static void main(String[] args) {
         SpringApplication.run(HospApplication.class,args);

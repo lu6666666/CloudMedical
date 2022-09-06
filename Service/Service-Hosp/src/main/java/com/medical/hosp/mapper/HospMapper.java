@@ -1,4 +1,4 @@
-package com.medical.mapper;
+package com.medical.hosp.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.medical.model.HospitalSet;
