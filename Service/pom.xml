@@ -5,6 +5,7 @@
     <modules>
         <module>Service-User</module>
         <module>Service-Hosp</module>
+        <module>Service-Cmn</module>
     </modules>
     <parent>
         <artifactId>CloudMedical</artifactId>

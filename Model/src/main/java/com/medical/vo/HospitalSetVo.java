@@ -1,4 +1,4 @@
-package com.medical.model;
+package com.medical.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

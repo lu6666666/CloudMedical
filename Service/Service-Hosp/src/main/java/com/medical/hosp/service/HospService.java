@@ -1,12 +1,9 @@
 package com.medical.hosp.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.medical.model.HospitalSet;
-import com.medical.model.HospitalSetVo;
-import com.medical.result.Result;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
+import com.medical.vo.HospitalSetVo;
 
 /**
  * @author Luo.X
@@ -23,5 +20,5 @@ public interface HospService extends IService<HospitalSet> {
      * @param hospitalSetVo 查询条件
      * @return
      */
-    List<HospitalSet> findHospByIDPage(int currentPage, int pageSize , HospitalSetVo hospitalSetVo);
+    Page findHospByIDPage(int currentPage, int pageSize , HospitalSetVo hospitalSetVo);
 }

@@ -6,12 +6,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.medical.hosp.mapper.HospMapper;
 import com.medical.model.HospitalSet;
 import com.medical.hosp.service.HospService;
-import com.medical.model.HospitalSetVo;
-import com.medical.result.Result;
+import com.medical.vo.HospitalSetVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author Luo.X
@@ -28,7 +25,7 @@ public class HospServiceImpl extends ServiceImpl<HospMapper, HospitalSet> implem
 
 
     @Override
-    public List<HospitalSet> findHospByIDPage(int currentPage, int pageSize, HospitalSetVo hospitalSetVo) {
+    public Page findHospByIDPage(int currentPage, int pageSize, HospitalSetVo hospitalSetVo) {
         // 创建page对象 当前页 每页条数为参数
         Page<HospitalSet> page = new Page<>(currentPage, pageSize);
 
@@ -42,8 +39,6 @@ public class HospServiceImpl extends ServiceImpl<HospMapper, HospitalSet> implem
             wrapper.eq("hoscode", hospitalSetVo.getHoscode());
         }
         Page<HospitalSet> selectPage = hospMapper.selectPage(page, wrapper);
-        // 获取返回值
-        List<HospitalSet> hospitalSetList = selectPage.getRecords();
-        return hospitalSetList;
+        return selectPage;
     }
 }

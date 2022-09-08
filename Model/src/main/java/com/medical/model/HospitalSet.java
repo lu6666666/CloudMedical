@@ -1,6 +1,8 @@
 package com.medical.model;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +26,8 @@ public class HospitalSet implements Serializable {
     /**
      * 编号
      */
+    // 解决前台由于id过长传递过来的数据不一致问题
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
     /**
      * 医院名称

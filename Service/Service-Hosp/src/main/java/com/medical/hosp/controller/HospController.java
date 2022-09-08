@@ -1,15 +1,12 @@
 package com.medical.hosp.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.medical.model.HospitalSet;
 import com.medical.hosp.service.HospService;
-import com.medical.model.HospitalSetVo;
+import com.medical.vo.HospitalSetVo;
 import com.medical.result.Result;
 import com.medical.utils.MD5;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +23,8 @@ import java.util.Random;
 @Api(tags = "医院设置管理")
 @RestController
 @RequestMapping("/admin/Hosp")
+// 解决跨域问题
+@CrossOrigin
 public class HospController {
 
     // 注入service
@@ -60,8 +59,8 @@ public class HospController {
      *  @RequestBody(required = false) 代表参数hospitalSetVo可以不传递
      */
     @ApiOperation(value = "条件查询并分页")
-    @PostMapping("/findHospByIDPage")
-    public Result findHospByIDPage(int currentPage, int pageSize ,
+    @PostMapping("/findHospByIDPage/{currentPage}/{pageSize}")
+    public Result findHospByIDPage(@PathVariable int currentPage,@PathVariable int pageSize ,
                                    @RequestBody(required = false) HospitalSetVo hospitalSetVo){
         return Result.ok(hospService.findHospByIDPage(currentPage,pageSize,hospitalSetVo));
     }
@@ -111,6 +110,7 @@ public class HospController {
     @ApiOperation(value = "根据id批量删除医院设置")
     @PostMapping("/delHospByIds")
     public Result delHospByIds(@RequestBody List<Long> ids){
+        System.out.println(ids);
         boolean b = hospService.removeByIds(ids);
         if (b){
             return Result.ok();
@@ -138,6 +138,7 @@ public class HospController {
     /**
      * 发送签名密钥
      */
+    @ApiOperation("发送签名密钥")
     @PutMapping("/lockHospSignKey")
     public Result lockHospSignKey(@PathVariable Long id){
         HospitalSet hospitalSet = hospService.getById(id);
