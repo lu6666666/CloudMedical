@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * @author Luo.X
  * @Description 医院信息分页查询条件
@@ -15,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class HospitalSetVo {
+public class HospitalSetVo implements Serializable {
     /**
      * 医院名称
      */
