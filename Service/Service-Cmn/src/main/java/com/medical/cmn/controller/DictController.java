@@ -6,6 +6,7 @@ import com.medical.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,6 +50,7 @@ public class DictController {
 
     /**
      * 根据上级id查询子数据列表
+     *  使用redis缓存
      */
     @ApiOperation(value = "根据上级id查询子数据列表")
     @GetMapping("/findDictById/{parentId}")

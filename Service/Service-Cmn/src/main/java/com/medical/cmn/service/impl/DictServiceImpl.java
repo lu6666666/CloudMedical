@@ -10,6 +10,7 @@ import com.medical.model.Dict;
 import com.medical.utils.RandomUtils;
 import com.medical.vo.DictIEVo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,6 +35,18 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     /*@Autowired
     private DictMapper dictMapper;*/
 
+    /**
+     * 使用Redis缓存
+     *  @Cacheable 注解
+     *      根据方法对其返回结果进行缓存，下次请求时，如果缓存存在，则直接读取缓存数据返回；
+     *      如果缓存不存在，则执行方法，并把返回的结果存入缓存中。一般用在查询方法上
+     *      value	缓存名，必填，它指定了你的缓存存放在哪块命名空间
+     *      cacheNames	与 value 差不多，二选一即可
+     *      key	可选属性，可以使用 SpEL 标签自定义缓存的key
+     * @param parentId
+     * @return
+     */
+    @Cacheable(value = "findDictById",keyGenerator = "keyGenerator")
     @Override
     public List<Dict> findDictByIdService(Long parentId) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
