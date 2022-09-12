@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: Hospital
+  profiles:
+    active: dev

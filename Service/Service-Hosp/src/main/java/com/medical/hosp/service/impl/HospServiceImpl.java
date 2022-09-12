@@ -41,4 +41,12 @@ public class HospServiceImpl extends ServiceImpl<HospMapper, HospitalSet> implem
         Page<HospitalSet> selectPage = hospMapper.selectPage(page, wrapper);
         return selectPage;
     }
+
+    @Override
+    public String getKey(String hoscode) {
+        QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
+        wrapper.eq("hoscode",hoscode);
+        HospitalSet hospitalSet = baseMapper.selectOne(wrapper);
+        return hospitalSet.getSignKey();
+    }
 }

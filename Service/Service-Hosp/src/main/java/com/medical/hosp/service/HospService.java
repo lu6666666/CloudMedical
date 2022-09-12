@@ -21,4 +21,9 @@ public interface HospService extends IService<HospitalSet> {
      * @return
      */
     Page findHospByIDPage(int currentPage, int pageSize , HospitalSetVo hospitalSetVo);
+
+    /**
+     * 根据医院编码 查询签名
+     */
+    String getKey(String hoscode);
 }

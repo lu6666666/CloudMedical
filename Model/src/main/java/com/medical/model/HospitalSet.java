@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.io.Serializable;
@@ -21,6 +22,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Component
 public class HospitalSet implements Serializable {
     private static final long serialVersionUID = -18032608498158198L;
     /**
