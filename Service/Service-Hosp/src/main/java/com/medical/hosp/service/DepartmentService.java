@@ -1,5 +1,8 @@
 package com.medical.hosp.service;
 
+import com.medical.model.Department;
+import org.springframework.data.domain.Page;
+
 import java.util.Map;
 
 /**
@@ -14,4 +17,16 @@ public interface DepartmentService {
      * @param switchMap
      */
     void saveDepartmentService(Map<String, Object> switchMap);
+
+    /**
+     * 分页(mongodb)查询科室
+     * @param switchMap
+     */
+    Page<Department> findDepartmentService(Map<String, Object> switchMap);
+
+    /**
+     * 删除科室信息
+     * @param switchMap
+     */
+    void removeDepartmentService(Map<String, Object> switchMap);
 }
