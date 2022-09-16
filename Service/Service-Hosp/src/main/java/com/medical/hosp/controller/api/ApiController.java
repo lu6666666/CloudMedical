@@ -1,17 +1,15 @@
 package com.medical.hosp.controller.api;
 
-import com.medical.exception.ExceptionHandling;
 import com.medical.exception.customizeException;
 import com.medical.helper.HttpRequestHelper;
 import com.medical.hosp.service.DepartmentService;
-import com.medical.hosp.service.HospRepositoryService;
+import com.medical.hosp.service.HospitalService;
 import com.medical.hosp.service.HospService;
 import com.medical.hosp.service.ScheduleService;
 import com.medical.model.Department;
 import com.medical.model.Hospital;
 import com.medical.result.Result;
 import com.medical.result.ResultCodeEnum;
-import com.medical.utils.MD5;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ import java.util.Map;
 public class ApiController {
 
     @Autowired
-    private HospRepositoryService hospRepositoryService;
+    private HospitalService hospitalService;
 
     @Autowired
     private HospService hospService;
@@ -64,7 +62,7 @@ public class ApiController {
         logoData = logoData.replaceAll(" ", "+");
         switchMap.put("logoData", logoData);
 
-        hospRepositoryService.saveHospService(switchMap);
+        hospitalService.saveHospService(switchMap);
         return Result.ok();
     }
 
@@ -85,7 +83,7 @@ public class ApiController {
             throw new customizeException(ResultCodeEnum.SIGN_ERROR);
         }
         // 调用方法根据医院编号查询医院信息
-        Hospital hospital = hospRepositoryService.getHospitalShowService(hoscode);
+        Hospital hospital = hospitalService.getHospitalShowService(hoscode);
         return Result.ok(hospital);
     }
 

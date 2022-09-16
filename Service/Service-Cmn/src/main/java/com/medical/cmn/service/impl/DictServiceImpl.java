@@ -12,6 +12,7 @@ import com.medical.vo.DictIEVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -99,6 +100,39 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String findByDictCodeAndValueService(String dictCode, String value) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        // 如果dictCode为空 根据value查询
+        if (StringUtils.isEmpty(dictCode)){
+            wrapper.eq("value",value);
+            Dict dict = baseMapper.selectOne(wrapper);
+            return dict.getName();
+        }else {
+            // 如果dictCode不为空 根据dictCode查询 获取id
+            wrapper.eq("dict_code",dictCode);
+            Dict dict = baseMapper.selectOne(wrapper);
+            // 获取id
+            Long id = dict.getId();
+            // 根据id查询name
+            Dict dictInfo = baseMapper.selectOne(new QueryWrapper<Dict>()
+                    .eq("parent_id", id)
+                    .eq("value",value)
+            );
+            return dictInfo.getName();
+        }
+    }
+
+
+    @Override
+    public List<Dict> findByProvinceService(String dictCode) {
+        QueryWrapper<Dict> wrapper= new QueryWrapper<>();
+        wrapper.eq("dict_code",dictCode);
+        Dict dict = baseMapper.selectOne(wrapper);
+        List<Dict> dictList = this.findDictByIdService(dict.getId());
+        return dictList;
     }
 
     /**

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.security.PublicKey;
 import java.util.List;
 
 /**
@@ -58,4 +59,34 @@ public class DictController {
         List<Dict> dictList = dictService.findDictByIdService(parentId);
         return Result.ok(dictList);
     }
+
+    /**
+     * 根据dict_code和value查询name
+     */
+    @ApiOperation(value = "根据dict_code和value查询")
+    @GetMapping("/findByDictName/{dictCode}/{value}")
+    public String findByDictName(@PathVariable String dictCode,@PathVariable String value){
+        return dictService.findByDictCodeAndValueService(dictCode,value);
+    }
+
+    /**
+     * 根据value查询name
+     */
+    @ApiOperation(value = "根据dict_code和value查询")
+    @GetMapping("/findByDictName/{value}")
+    public String findByName(@PathVariable String value){
+        return dictService.findByDictCodeAndValueService("",value);
+    }
+
+    /**
+     * 根据dictCode查询所有的省
+     */
+    @ApiOperation(value = "根据dictCode查询所有的省")
+    @GetMapping("/findByProvince/{dictCode}")
+    public Result findByProvince(@PathVariable String dictCode){
+        List<Dict> dictList = dictService.findByProvinceService(dictCode);
+        return Result.ok(dictList);
+    }
+
+
 }

@@ -18,9 +18,14 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  # 连接mongodb
   data:
     mongodb:
       uri: mongodb://192.168.43.129:27017/medical_hosp
+  cloud:
+    # 注册中心
+    nacos:
+      server-addr: 192.168.43.128:8848
 # mapper XML文件的路径
 mybatis-plus:
   mapper-locations: classpath:com/medical/mapper/*.xml

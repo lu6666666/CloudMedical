@@ -6,6 +6,7 @@
         <module>Common</module>
         <module>Model</module>
         <module>Service</module>
+        <module>Feign-Client</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
