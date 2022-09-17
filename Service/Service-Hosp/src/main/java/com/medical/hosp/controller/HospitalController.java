@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/admin/Hospital")
 // 解决跨域问题
-@CrossOrigin
+//@CrossOrigin
 public class HospitalController {
 
     @Autowired
@@ -32,6 +32,7 @@ public class HospitalController {
      * 查询医院列表(条件查询分页)
      * @RequestBody(required = false) 代表参数hospitalSetVo可以不传递
      */
+    @ApiOperation(value = "查询医院列表(条件查询分页)")
     @GetMapping("/getHospital/{currentPage}/{pageSize}")
     public Result getHospital(@PathVariable int currentPage, @PathVariable int pageSize,
                               @RequestBody(required = false) HospitalQueryVo hospitalQueryVo){

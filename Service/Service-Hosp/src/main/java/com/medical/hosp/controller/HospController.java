@@ -24,7 +24,7 @@ import java.util.Random;
 @RestController
 @RequestMapping("/admin/Hosp")
 // 解决跨域问题
-@CrossOrigin
+//@CrossOrigin
 public class HospController {
 
     // 注入service

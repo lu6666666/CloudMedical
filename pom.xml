@@ -7,6 +7,7 @@
         <module>Model</module>
         <module>Service</module>
         <module>Feign-Client</module>
+        <module>GateWay</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

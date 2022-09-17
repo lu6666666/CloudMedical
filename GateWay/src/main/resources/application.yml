@@ -1,0 +1,29 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: GateWay
+  cloud:
+    # 注册中心
+    nacos:
+      discovery:
+        server-addr: 192.168.43.128:8848
+    gateway:
+      discovery:
+        locator:
+          # 使用服务发现路由
+          enabled: true
+      routes:
+          - id: Service-Cmn # 路由的名称
+            uri: lb://Service-Cmn # 路由的url
+            predicates: # 当断言成功后，交给某一个微服务处理时使用的是转发
+              - Path=/cmn/**
+            filters:
+              - StripPrefix=1 # 去掉uri中的第一部分
+          - id: Service-Hosp # 路由的名称
+            uri: lb://Service-Hosp # 路由的url
+            predicates: # 当断言成功后，交给某一个微服务处理时使用的是转发
+              - Path=/hosp/**
+            filters:
+              - StripPrefix=1 # 去掉uri中的第一部分
+

@@ -24,7 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/Dict")
 // 解决跨域问题
-@CrossOrigin
+//@CrossOrigin
 public class DictController {
 
     @Autowired

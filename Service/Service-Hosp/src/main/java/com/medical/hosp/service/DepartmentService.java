@@ -1,8 +1,10 @@
 package com.medical.hosp.service;
 
 import com.medical.model.Department;
+import com.medical.vo.DepartmentVo;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,4 +31,11 @@ public interface DepartmentService {
      * @param switchMap
      */
     void removeDepartmentService(Map<String, Object> switchMap);
+
+    /**
+     * 根据医院编号 查询医院所有科室信息
+     * @param hoscode
+     * @return
+     */
+    List<DepartmentVo> findDepartmentByHosCodeService(String hoscode);
 }
