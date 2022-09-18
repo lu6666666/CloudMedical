@@ -49,4 +49,18 @@ public interface HospitalService {
      * 医院详情（根据id查询详细信息）
      */
     Hospital findHospitalByIdService(String id);
+
+    /**
+     * 根据前台传递的医院名称 模糊查询所有医院信息
+     * @param hosName
+     * @return
+     */
+    List<Hospital> findHospitalByHosNameService(String hosName);
+
+    /**
+     * 根据医院编码查询医院信息（查询医院挂号信息）
+     * @param hoscode
+     * @return
+     */
+    Hospital findHospitalByHosCodeService(String hoscode);
 }

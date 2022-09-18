@@ -44,6 +44,19 @@ public class Swagger2Config {
 
     }
 
+    @Bean
+    public Docket userApiConfig(){
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("userApi")
+                .apiInfo(userApiInfo())
+                .select()
+                //只显示site路径下的页面
+                .paths(Predicates.and(PathSelectors.regex("/site/.*")))
+                .build();
+
+    }
+
     private ApiInfo webApiInfo(){
 
         return new ApiInfoBuilder()
@@ -59,6 +72,16 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("后台管理系统-API文档")
                 .description("本文档描述了后台管理系统微服务接口定义")
+                .version("1.0")
+                .contact(new Contact("medical", "", "2840392969@qq.com"))
+                .build();
+    }
+
+    private ApiInfo userApiInfo(){
+
+        return new ApiInfoBuilder()
+                .title("前台用户界面展示信息-API文档")
+                .description("本文档描述了台用户界面展示信息接口定义")
                 .version("1.0")
                 .contact(new Contact("medical", "", "2840392969@qq.com"))
                 .build();

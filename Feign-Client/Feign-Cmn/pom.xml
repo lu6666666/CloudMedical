@@ -11,5 +11,11 @@
 
     <artifactId>Feign-Cmn</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.medical</groupId>
+            <artifactId>Common-Utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

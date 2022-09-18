@@ -1,9 +1,14 @@
 package com.medical.client.cmnFeginClient;
 
+import com.medical.model.Dict;
+import com.medical.result.Result;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 /**
  * @author Luo.X
@@ -28,4 +33,17 @@ public interface DictFeignClient {
      */
     @GetMapping("/admin/Dict/findByDictName/{value}")
     String findByDictName(@PathVariable("value") String value);
+
+    /**
+     * 根据上级id查询子数据列表
+     *  使用redis缓存
+     */
+    @GetMapping("/admin/Dict/findDictById/{parentId}")
+    Result findDictById(@PathVariable("parentId") Long parentId);
+
+    /**
+     * 根据dictCode查询所有的省
+     */
+    @GetMapping("/admin/Dict/findByProvince/{dictCode}")
+    Result findByProvince(@PathVariable("dictCode") String dictCode);
 }

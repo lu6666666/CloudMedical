@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -116,6 +117,41 @@ public class HospitalServiceImpl implements HospitalService {
         // 获取查询到的数据并赋值给hospital对象
         hospital = optional.get();
 
+        hospital = this.setHospitalList(hospital);
+        return hospital;
+    }
+
+    @Override
+    public List<Hospital> findHospitalByHosNameService(String hosName) {
+
+        // 创建条件匹配器
+        ExampleMatcher matcher = ExampleMatcher.matching()  // 构造对象
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING) // 改变默认字符串匹配方式为： 模糊查询
+                .withIgnoreCase(true); /* 忽略大小写 */
+        // HospitalQueryVo 转换为 Hospital
+        Hospital hospital = new Hospital();
+        hospital.setHosname(hosName);
+        // 创建对象
+        Example<Hospital> example = Example.of(hospital,matcher);
+        // 调用方法实现查询
+        List<Hospital> list = hospRepository.findAll(example);
+        return list;
+    }
+
+    /**
+     * 根据医院编码查询医院信息（查询医院挂号信息）
+     * @param hoscode
+     * @return
+     */
+    @Override
+    public Hospital findHospitalByHosCodeService(String hoscode) {
+        Hospital hospital = new Hospital();
+        hospital.setHoscode(hoscode);
+        Example<Hospital> example = Example.of(hospital);
+        Optional<Hospital> one = hospRepository.findOne(example);
+        hospital = one.get();
+
+        // 封装医院等级
         hospital = this.setHospitalList(hospital);
         return hospital;
     }
