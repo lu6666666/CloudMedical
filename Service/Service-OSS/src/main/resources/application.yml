@@ -1,0 +1,19 @@
+server:
+  port: 8205
+spring:
+  application:
+    name: Service-OSS
+  # 设置返回json全局时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    # 注册中心
+    nacos:
+      server-addr: 192.168.43.128:8848
+Alibaba:
+  open:
+    endpoint:
+    accessKeyId:
+    accessKeySecret:
+    bucketName:

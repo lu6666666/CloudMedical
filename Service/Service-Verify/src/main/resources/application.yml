@@ -1,0 +1,29 @@
+server:
+  port: 8204
+spring:
+  application:
+    name: Service-Verify
+  # 设置返回json全局时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    # 注册中心
+    nacos:
+      server-addr: 192.168.43.128:8848
+  # Redis
+  redis:
+    host: 192.168.43.128
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        # 最大阻塞等待时间(负数表示没限制)
+        max-idle: 5
+        min-idle: 0
+email:
+  email_address: 18438897188@163.com
+  email_key:

@@ -26,4 +26,22 @@ spring:
               - Path=/hosp/**
             filters:
               - StripPrefix=1 # 去掉uri中的第一部分
+          - id: Service-User # 路由的名称
+            uri: lb://Service-User # 路由的url
+            predicates: # 当断言成功后，交给某一个微服务处理时使用的是转发
+              - Path=/user/**
+            filters:
+              - StripPrefix=1 # 去掉uri中的第一部分
+          - id: Service-Verify # 路由的名称
+            uri: lb://Service-Verify # 路由的url
+            predicates: # 当断言成功后，交给某一个微服务处理时使用的是转发
+              - Path=/verify/**
+            filters:
+              - StripPrefix=1 # 去掉uri中的第一部分
+          - id: Service-OSS # 路由的名称
+            uri: lb://Service-OSS # 路由的url
+            predicates: # 当断言成功后，交给某一个微服务处理时使用的是转发
+               - Path=/oss/**
+            filters:
+              - StripPrefix=1 # 去掉uri中的第一部分
 

@@ -9,14 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Service-User</artifactId>
-
+    <artifactId>Service-OSS</artifactId>
 
     <dependencies>
+        <!--阿里云OSS-->
         <dependency>
-            <groupId>com.medical</groupId>
-            <artifactId>Feign-Cmn</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.15.0</version>
+        </dependency>
+        <!-- 日期工具栏依赖 -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -6,6 +6,8 @@
         <module>Service-User</module>
         <module>Service-Hosp</module>
         <module>Service-Cmn</module>
+        <module>Service-Verify</module>
+        <module>Service-OSS</module>
     </modules>
     <parent>
         <artifactId>CloudMedical</artifactId>
