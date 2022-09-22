@@ -76,7 +76,7 @@ public class FileAliOssServiceImpl implements FileAliOssService {
             // 上传文件。
             ossClient.putObject(putObjectRequest);
 
-            // 上传后文件的地址 https://cloudmedical.oss-cn-hangzhou.aliyuncs.com/%E5%88%98%E8%AF%86%E6%B8%8A%E7%8E%A9%E6%89%8B%E6%9C%BA.jpg
+            // 上传后文件的地址
             String url = "https://" + bucketName + "." + endpoint + "/" + fileName;
             map.put("url", url);
             map.put("fileName", fileName);
